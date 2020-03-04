@@ -7,11 +7,12 @@ import { Component, OnInit, Input } from '@angular/core';
 })
 export class PackageItemComponent implements OnInit {
   @Input() package: any;
-
+  date: Date;
   itemsShortDescription: string;
   constructor() { }
 
   ngOnInit() {
+    console.log(this.package);
     this.itemsShortDescription = '';
     this.setShortDescription();
   }
@@ -27,5 +28,13 @@ export class PackageItemComponent implements OnInit {
       }
       this.itemsShortDescription = `${this.itemsShortDescription.slice(1, -1)} and ${this.package.package_items.length - 2} more item(s)`;
     }
+  }
+  getDate() {
+    const _MS_PER_DAY = 1000 * 60 * 60 * 24;
+    const javaScriptDate = new Date(this.package.received_date);
+    const dateNow = new Date();
+    const utcRegister = Date.UTC(javaScriptDate.getFullYear(), javaScriptDate.getMonth(), javaScriptDate.getDay());
+    const utcNow = Date.UTC(dateNow.getFullYear(), dateNow.getMonth(), dateNow.getDay());
+    return Math.floor((utcNow - utcRegister) / _MS_PER_DAY);
   }
 }
