@@ -25,7 +25,7 @@ export class PackageItemCreateComponent implements OnInit {
   }
   savePackage() {
     this.packageService.postPackage({
-      id: 1,
+      id: 2,
       packageDesc: this.description,
       packageFrom: this.received_from,
       itens: this.items

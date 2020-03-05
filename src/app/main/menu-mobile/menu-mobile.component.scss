@@ -1,0 +1,15 @@
+.postion-element{
+  left: 1rem;
+  bottom: 1rem;
+}
+
+
+.open{
+  height: 30vh;
+  transition: height .2s ease-in-out;
+}
+
+.closed{
+  height: 0;
+  transition: height .2s ease-in-out;
+}

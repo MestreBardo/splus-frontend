@@ -1,20 +1,20 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { PackageItemCreateComponent } from './package-item-create.component';
+import { MenuMobileComponent } from './menu-mobile.component';
 
-describe('PackageItemCreateComponent', () => {
-  let component: PackageItemCreateComponent;
-  let fixture: ComponentFixture<PackageItemCreateComponent>;
+describe('MenuMobileComponent', () => {
+  let component: MenuMobileComponent;
+  let fixture: ComponentFixture<MenuMobileComponent>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ PackageItemCreateComponent ]
+      declarations: [ MenuMobileComponent ]
     })
     .compileComponents();
   }));
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(PackageItemCreateComponent);
+    fixture = TestBed.createComponent(MenuMobileComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

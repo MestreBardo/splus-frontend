@@ -10,7 +10,7 @@ export class PackageService {
 
   getAllProducts() {
     return new Promise((resolve, reject) => {
-      this.http.get('http://localhost:8000/package')
+      this.http.get('https://limitless-scrubland-52724.herokuapp.com/package')
       .subscribe((data: any) => {
         resolve(data);
       });
@@ -19,7 +19,7 @@ export class PackageService {
   }
   postPackage(newPackage: any) {
     return new Promise((resolve, reject) => {
-      this.http.post('http://localhost:8000/package', newPackage).subscribe((data: any) => {
+      this.http.post('https://limitless-scrubland-52724.herokuapp.com/package', newPackage).subscribe((data: any) => {
         resolve(data);
       });
     });

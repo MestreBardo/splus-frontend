@@ -1,6 +1,7 @@
-<app-menu></app-menu>
-<div class="margin-left-custom">
+<div class="d-flex">
+  <app-menu class="margin-left-custom d-none d-md-block"></app-menu>
   <div class="container-fluid py-3">
     <router-outlet></router-outlet>
   </div>
 </div>
+<app-menu-mobile class="d-block d-md-none"></app-menu-mobile>
