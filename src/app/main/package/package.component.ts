@@ -24,7 +24,9 @@ export class PackageComponent implements OnInit {
 
     this.modalService.onHidden.pipe(take(1)).subscribe(() => {
       this.packageService.getAllProducts()
-      .then(data => this.packages = data);
+      .then(data => {
+        this.packages = data;
+      });
     });
   }
   openModal2(template2: TemplateRef<any>) {

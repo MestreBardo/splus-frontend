@@ -11,9 +11,6 @@ import { Component, OnInit } from '@angular/core';
 export class PackageItemCreateComponent implements OnInit {
   description: string;
   received_from: string;
-  item1: string;
-  item2: string;
-  item3: string;
   items: any[];
   constructor(public modal: BsModalRef, private packageService: PackageService) {
 
@@ -36,7 +33,6 @@ export class PackageItemCreateComponent implements OnInit {
 
   }
   addNewItem() {
-    console.log(this.items);
     this.items.push({
       description: '',
       quantity: 1

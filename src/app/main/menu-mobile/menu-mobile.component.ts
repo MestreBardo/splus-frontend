@@ -18,4 +18,8 @@ export class MenuMobileComponent implements OnInit {
     this.classMenu = 'open';
   }
 
+  closeMenu() {
+    this.classMenu = 'closed';
+  }
+
 }

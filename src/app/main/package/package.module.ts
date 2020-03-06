@@ -6,10 +6,11 @@ import { PackageItemComponent } from './package-item/package-item.component';
 import { ModalModule } from 'ngx-bootstrap/modal';
 import { PackageItemCreateComponent } from './package-item-create/package-item-create.component';
 import { FormsModule } from '@angular/forms';
+import { PackageItemDescriptionComponent } from './package-item/package-item-description/package-item-description.component';
 
 
 @NgModule({
-  declarations: [PackageComponent, PackageItemComponent, PackageItemCreateComponent],
+  declarations: [PackageComponent, PackageItemComponent, PackageItemCreateComponent, PackageItemDescriptionComponent],
   imports: [
     CommonModule,
     PackageRoutingModule,
@@ -18,7 +19,8 @@ import { FormsModule } from '@angular/forms';
 
   ],
   entryComponents: [
-    PackageItemCreateComponent
+    PackageItemCreateComponent,
+    PackageItemDescriptionComponent
   ]
 })
 export class PackageModule { }
