@@ -16,7 +16,7 @@ export class PackageItemComponent implements OnInit {
   constructor(private modalService: BsModalService) { }
 
   ngOnInit() {
-
+    console.log(this.package);
   }
 
   showAllInfo() {

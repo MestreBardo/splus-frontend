@@ -10,21 +10,24 @@ import { Component, OnInit } from '@angular/core';
 })
 export class PackageItemCreateComponent implements OnInit {
   description: string;
-  received_from: string;
+  title: string;
+  receivedFrom: string;
   items: any[];
   constructor(public modal: BsModalRef, private packageService: PackageService) {
 
   }
 
   ngOnInit() {
+    this.title = '';
     this.description = '';
     this.items = [];
   }
   savePackage() {
     this.packageService.postPackage({
       id: 2,
-      packageDesc: this.description,
-      packageFrom: this.received_from,
+      title: this.title,
+      description: this.description,
+      packageFrom: this.receivedFrom,
       itens: this.items
     })
     .then(() => {
