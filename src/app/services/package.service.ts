@@ -1,11 +1,12 @@
 import { HttpClient } from '@angular/common/http';
-import { Injectable } from '@angular/core';
+import { Injectable, EventEmitter } from '@angular/core';
 
 @Injectable({
   providedIn: 'root'
 })
 export class PackageService {
 
+  addItem = new EventEmitter();
   constructor(private http: HttpClient) {}
 
   getAllProducts() {
@@ -23,5 +24,8 @@ export class PackageService {
         resolve(data);
       });
     });
+  }
+  addAItemToPackage(newItem: any) {
+    this.addItem.emit(newItem);
   }
 }

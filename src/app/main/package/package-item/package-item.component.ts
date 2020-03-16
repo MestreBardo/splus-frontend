@@ -11,30 +11,34 @@ import { take } from 'rxjs/operators';
 export class PackageItemComponent implements OnInit {
   @Input() package: any;
   date: Date;
+  itensDescriptions: string;
   modal: BsModalRef;
-  itemsShortDescription: string;
   constructor(private modalService: BsModalService) { }
 
   ngOnInit() {
-
-  }
-
-  showAllInfo() {
-    this.modal = this.modalService.show(PackageItemDescriptionComponent,
-      {
-        initialState: {package: this.package}
+    this.itensDescriptions = '';
+    const itensDivide = [];
+    this.package.package_items.forEach(element => {
+      let found = false;
+      itensDivide.forEach(arrElement => {
+        if (arrElement.type === element.type) {
+          found = true;
+          arrElement.quantity += 1;
+        }
       });
-
-    this.modalService.onHidden.pipe(take(1)).subscribe(() => {
+      if (!found) {
+        itensDivide.push({
+          type: element.type,
+          quantity: 1
+        });
+      }
     });
-  }
-
-  getDate() {
-    const _MS_PER_DAY = 1000 * 60 * 60 * 24;
-    const javaScriptDate = new Date(this.package.received_date);
-    const dateNow = new Date();
-    const utcRegister = Date.UTC(javaScriptDate.getFullYear(), javaScriptDate.getMonth(), javaScriptDate.getDay());
-    const utcNow = Date.UTC(dateNow.getFullYear(), dateNow.getMonth(), dateNow.getDay());
-    return Math.floor((utcNow - utcRegister) / _MS_PER_DAY);
+    itensDivide.forEach(el => {
+      this.itensDescriptions += `${el.quantity}x ${el.type}, `;
+    });
+    this.itensDescriptions = this.itensDescriptions.substring(0, this.itensDescriptions.length - 2);
   }
 }
+
+
+

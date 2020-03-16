@@ -1,43 +1,46 @@
 <div class="modal-header">
-  <h4 class="modal-title pull-left">Register a Package</h4>
-  <button type="button" class="close pull-right" aria-label="Close" (click)="fechar()">
+  <h4 class="modal-title">Register a Package</h4>
+  <button type="button" class="close pull-right" aria-label="Close" (click)="modalItem.hide()">
     <span aria-hidden="true">&times;</span>
   </button>
 </div>
 <div class="modal-body">
-
-  <div class="form-group">
-    <label for="Title">Title</label>
-    <input type="text" class="form-control" id="Title" [(ngModel)]="title" placeholder="Enter a package title">
-  </div>
-  <div class="form-group">
-    <label for="receivedFrom">Received from</label>
-    <input type="text" class="form-control" id="receivedFrom" [(ngModel)]="receivedFrom" placeholder="Enter Received">
-  </div>
-  <div class="form-group">
-    <label for="Description">Description</label>
-    <textarea type="text" class="form-control" id="Description" [(ngModel)]="description" placeholder="Enter a package title"></textarea>
-  </div>
-  <div class="form-group border rounded p-2">
-    <label for="receivedFrom">Itens</label>
-    <div *ngFor="let item of items; let i = index">
-      <div class="row">
-        <div class="col-8">
-          <input type="text"  class="form-control mb-1" [(ngModel)]="items[i].description" placeholder="Item received">
-        </div>
-        <div class="col-4">
-          <input type="number"  class="form-control mb-1" [(ngModel)]="items[i].quantity" placeholder="Quantity">
+  <div class="container-fluid">
+    <div class="row my-0">
+      <div class="col-8">
+        <div class="form-group my-0">
+          <label for="itemName">Item</label>
+          <input type="text" class="form-control" id="itemName" [(ngModel)]= 'name' placeholder="Enter a product name">
         </div>
       </div>
+      <div class="col-4">
+        <div class="form-group my-0">
+          <label for="Quantity">Quantity</label>
+          <input type="number" class="form-control" id="Quantity" [(ngModel)]='quantity' (input)="setParameters()">
+        </div>
+      </div>
+
     </div>
-
-    <button class="btn btn-sm btn-block bg-danger" (click)='addNewItem()'>add new item</button>
-
+    <hr *ngIf="itens.length != 0" class="my-2">
+    <div class="row" *ngFor="let item of itens; let i = index">
+      <div class="col-12">
+        <div class="form-group my-1">
+          <input type="text" class="form-control form-control-sm" (input)="checkComplete(i)" [(ngModel)]="itens[i].serialNumber"  placeholder="Serial Number">
+        </div>
+      </div>
+      <div class="col-12">
+        <div class="form-group mb-0">
+          <input type="text" class="form-control form-control-sm" (input)="checkComplete(i)" [(ngModel)]="itens[i].toDo"  placeholder="To Do">
+        </div>
+      </div>
+      <div class="col-12 mb-1">
+        <small *ngIf="itensCheck[i] == false" class="text-danger">Por favor preencher os dados</small>
+      </div>
+    </div>
   </div>
-
-</div>
+ </div>
 <div class="modal-footer">
-  <button (click)='savePackage()' class="btn btn-primary">Submit</button>
+  <button [disabled] = "itensCheck.includes(null) || itensCheck.includes(false) || name === '' || (quantity <= 0)" (click)='IncludeItem()' class="btn btn-primary">Include</button>
 </div>
 
 

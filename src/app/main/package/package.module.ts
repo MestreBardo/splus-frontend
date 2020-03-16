@@ -5,7 +5,7 @@ import { CommonModule } from '@angular/common';
 import { PackageItemComponent } from './package-item/package-item.component';
 import { ModalModule } from 'ngx-bootstrap/modal';
 import { PackageCreateComponent } from './package-create/package-create.component';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { PackageItemDescriptionComponent } from './package-item/package-item-description/package-item-description.component';
 import { PackageItemCreateComponent } from './package-create/package-item-create/package-item-create.component';
 
@@ -18,7 +18,8 @@ import { PackageItemCreateComponent } from './package-create/package-item-create
     CommonModule,
     PackageRoutingModule,
     ModalModule.forRoot(),
-    FormsModule
+    FormsModule,
+    ReactiveFormsModule
 
   ],
   entryComponents: [

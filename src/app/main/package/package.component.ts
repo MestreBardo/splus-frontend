@@ -24,14 +24,12 @@ export class PackageComponent implements OnInit {
   openModal() {
     this.isOpenModalPackage = true;
     this.modalService.onHidden.pipe(take(2)).subscribe((modal) => {
-      console.log('teste100');
-      // if (this.modalService.getModalsCount() === 0 && this.isOpenModalPackage === true) {
-      //   console.log('try');
-      //   this.packageService.getAllProducts()
-      //   .then(data => {
-      //     this.packages = data;
-      //   });
-      // }
+      if (this.modalService.getModalsCount() === 0 && this.isOpenModalPackage === true) {
+        this.packageService.getAllProducts()
+        .then(data => {
+          this.packages = data;
+        });
+      }
     });
 
     this.modal = this.modalService.show(PackageCreateComponent);

@@ -14,7 +14,6 @@ export class PackageCreateComponent implements OnInit {
   modalName = 'packageCreate';
   modalItem: BsModalRef;
   description: string;
-  title: string;
   receivedFrom: string;
   items: any[];
   constructor(public modal: BsModalRef, private packageService: PackageService, private modalService: BsModalService) {
@@ -22,14 +21,18 @@ export class PackageCreateComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.title = '';
     this.description = '';
     this.items = [];
+    this.packageService.addItem.subscribe((items: any) => {
+
+      this.items.push(items);
+
+      console.log(this.items);
+    });
   }
   savePackage() {
     this.packageService.postPackage({
       id: 2,
-      title: this.title,
       description: this.description,
       packageFrom: this.receivedFrom,
       itens: this.items
@@ -40,16 +43,12 @@ export class PackageCreateComponent implements OnInit {
 
   }
   addNewItem() {
-    // this.modalService.onHidden.pipe(take(1)).subscribe((data) => {
-    //   if (this.modalService.getModalsCount() === 1) {
-    //     console.log('teste2');
-    //   }
-    // })
-
     this.modalItem = this.modalService.show(PackageItemCreateComponent);
-
-    this.modalItem.content.evento.pipe(take(1))
-      .subscribe(() => console.log('teste99'));
+    this.modalService.onHidden.pipe(take(1)).subscribe((data) => {
+      if (this.modalService.getModalsCount() === 1 && this.modalItem.content.modalName === 'itemCreate' ) {
+        console.log('teste2');
+      }
+    });
   }
 
 }
