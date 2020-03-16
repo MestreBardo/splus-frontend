@@ -4,13 +4,16 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { PackageItemComponent } from './package-item/package-item.component';
 import { ModalModule } from 'ngx-bootstrap/modal';
-import { PackageItemCreateComponent } from './package-item-create/package-item-create.component';
+import { PackageCreateComponent } from './package-create/package-create.component';
 import { FormsModule } from '@angular/forms';
 import { PackageItemDescriptionComponent } from './package-item/package-item-description/package-item-description.component';
+import { PackageItemCreateComponent } from './package-create/package-item-create/package-item-create.component';
 
 
 @NgModule({
-  declarations: [PackageComponent, PackageItemComponent, PackageItemCreateComponent, PackageItemDescriptionComponent],
+  declarations: [PackageComponent, PackageItemComponent,
+    PackageCreateComponent, PackageItemDescriptionComponent,
+    PackageItemCreateComponent],
   imports: [
     CommonModule,
     PackageRoutingModule,
@@ -19,8 +22,9 @@ import { PackageItemDescriptionComponent } from './package-item/package-item-des
 
   ],
   entryComponents: [
-    PackageItemCreateComponent,
-    PackageItemDescriptionComponent
+    PackageCreateComponent,
+    PackageItemDescriptionComponent,
+    PackageItemCreateComponent
   ]
 })
 export class PackageModule { }

@@ -12,7 +12,7 @@ export class PackageItemDescriptionComponent implements OnInit {
   constructor(public modal: BsModalRef) { }
 
   ngOnInit() {
-    console.log(this.package);
+
   }
 
 }
